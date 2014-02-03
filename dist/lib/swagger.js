@@ -1096,6 +1096,9 @@
               return _this.successCallback(response, _this.opts.parent);
             },
             response: function(response) {
+	      if (response.url==null) {
+		response.url = url;
+	      }
               return _this.successCallback(response, _this.opts.parent);
             }
           }

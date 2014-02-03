@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Swagger UI</title>
+  <title>Project DB REST API DOCS</title>
   <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'/>
   <link href='css/highlight.default.css' media='screen' rel='stylesheet' type='text/css'/>
   <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
@@ -19,7 +19,7 @@
   <script type="text/javascript">
     $(function () {
       window.swaggerUi = new SwaggerUi({
-      url: "http://petstore.swagger.wordnik.com/api/api-docs",
+      url: "/saga/swagger/api-docs.json",
       dom_id: "swagger-ui-container",
       supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
       onComplete: function(swaggerApi, swaggerUi){
@@ -31,6 +31,11 @@
       },
       docExpansion: "none"
     });
+
+    window.authorizations.add("Accept", new ApiKeyAuthorization("Accept", "application/json", "header"));
+    window.authorizations.add("Content-Type", new ApiKeyAuthorization("Content-Type", "application/json", "header"));
+    window.authorizations.add("RemoteUser", new ApiKeyAuthorization("RemoteUser", "nyou045@auckland.ac.nz", "header"));
+    window.authorizations.add("Authorization", new ApiKeyAuthorization("Authorization", "Basic YWRtaW46cGFzc3dvcmQ=", "header"));
 
     $('#input_apiKey').change(function() {
       var key = $('#input_apiKey')[0].value;
