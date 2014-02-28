@@ -1006,6 +1006,9 @@ var SwaggerRequest = function(type, url, params, opts, successCallback, errorCal
           return _this.successCallback(response, _this.opts.parent);
         },
         response: function(response) {
+          if (response.url==null) { // Fix for relative url
+            response.url = url;
+          }
           return _this.successCallback(response, _this.opts.parent);
         }
       }
